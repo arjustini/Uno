@@ -1,9 +1,12 @@
+
+
 public class Deck  {
 
     private Card[] deck;
     private int cardCount = 0;
     private final int DECK_SIZE = 108;
     private final int HAND_SIZE = 7;
+
 
 
 
@@ -23,6 +26,7 @@ public class Deck  {
             deck[cardCount] = new Card(Value.WILD, Color.NONE);
             cardCount++;
         }
+
 
         makeEight(Value.PLUSTWO);
         makeEight(Value.REVERSE);
@@ -52,7 +56,9 @@ public class Deck  {
 
         }
 
-
+    public Card getCard(int i){
+        return deck[i];
+    }
 
 
     //public method
@@ -67,12 +73,8 @@ public class Deck  {
     }
 
 
-    public Card[] deal(){
-        Card[] hand = new Card[HAND_SIZE];
-        for(int i = 0; i < 7; i++){
-            hand[i] = deck[i];
-        }
-        return hand;
+    public Card deal(int deckPosition){
+        return deck[deckPosition];
     }
 
 
