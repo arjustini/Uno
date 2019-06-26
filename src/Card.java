@@ -1,6 +1,7 @@
 public class Card {
     private Value value;
     private Color color;
+    String imagePath;
 
 
     //Constructor

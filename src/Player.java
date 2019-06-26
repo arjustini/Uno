@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Player {
 
     private Card[] hand;
@@ -15,14 +17,33 @@ public class Player {
         cardCount++;
     }
 
-
     public void printHand(){
      for(Card c:hand) {
 
          if(c != null){
              if (!c.getColor().equals(Color.NONE.getColor())) {
-                 System.out.println(c);
-             } else {
+
+                 if(c.getNumber() == (Value.REVERSE.getValue())){
+                     System.out.println(c.getColor() + " " + Value.REVERSE.getString());
+                 }
+
+                 else if(c.getNumber() == (Value.SKIP.getValue())){
+                     System.out.println(c.getColor() + " " + Value.SKIP.getString());
+                 }
+
+                 else if (c.getNumber() == (Value.PLUSTWO.getValue())){
+                     System.out.println(c.getColor() + " " + Value.PLUSTWO.getString());
+                 }
+
+                 else{
+                 System.out.println(c);}
+
+
+
+
+
+             }
+             else {
                  System.out.println(c.getString());
              }
          }
@@ -30,6 +51,15 @@ public class Player {
 
 
     }
+
+    public void playCard() {
+        System.out.println("Enter your card: ");
+        Scanner scanner = new Scanner(System.in);
+        String card = scanner.nextLine();
+        System.out.println("Your card is " + card);
+
+    }
+
 }
 
 

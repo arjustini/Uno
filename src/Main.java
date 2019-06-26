@@ -1,34 +1,38 @@
+import javax.swing.*;
 import java.util.ArrayList;
+
+
 
 public class Main {
 
     public static void main(String[] args) {
-
        Game game = new Game();
        Player player1 = new Player();
        Player player2 = new Player();
        Player player3 = new Player();
        game.addPlayer(player1);
        game.addPlayer(player2);
-       game.addPlayer(player3);
 
 
        game.dealPlayersIn();
 
-       System.out.println(" ");
-       player1.printHand();
 
-       System.out.println(" ");
-       player2.printHand();
 
-       System.out.println(" ");
-       player3.printHand();
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                GUI gui = new GUI();
+                gui.createView(game);
+                gui.setVisible(true);
+
+            }
+        });
+
 
 
 
     }
 }
-
 
 
 

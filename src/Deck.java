@@ -12,18 +12,22 @@ public class Deck  {
 
 
     //Constructor
-    public Deck(){
+    public Deck() {
         deck = new Card[DECK_SIZE];
 
-        //4 plus four cards
+    }
+
+     public void initalizeDeck(){   //4 plus four cards
         for(int i = 0; i <= 3; i++){
             deck[cardCount] = new Card(Value.PLUSFOUR, Color.NONE);
+            deck[cardCount].imagePath = Value.PLUSFOUR.getImgExt();
             cardCount++;
         }
 
         //4 wild cards
         for(int i = 0; i <= 3; i++){
             deck[cardCount] = new Card(Value.WILD, Color.NONE);
+            deck[cardCount].imagePath = Value.WILD.getImgExt();;
             cardCount++;
         }
 
@@ -47,6 +51,7 @@ public class Deck  {
         for (Color color : Color.values()) {
             if(!color.equals(Color.NONE)){
                 deck[cardCount] = new Card(Value.ZERO, color);
+                deck[cardCount].imagePath = color.getImgPrefix() + Value.ZERO.getImgExt();
                 cardCount++;
             }
 
@@ -60,10 +65,13 @@ public class Deck  {
         return deck[i];
     }
 
+    public void setCard(Card card, int i){
+        deck[i] = card;
+    }
 
     //public method
     public void shuffleDeck(){
-        for (int i = 107; i >0; i--){
+        for (int i = 107 ; i >0; i--){
             int rand = (int) (Math.random()*(i+1));
             Card temp = deck[i];
             deck[i] = deck[rand];
@@ -99,6 +107,7 @@ public class Deck  {
             for (Color color : Color.values()) {
                 if(!color.equals(Color.NONE)){
                     deck[cardCount] = new Card(value, color);
+                    deck[cardCount].imagePath = color.getImgPrefix() + value.getImgExt();
                     cardCount++;
                 }
 

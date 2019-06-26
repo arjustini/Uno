@@ -1,19 +1,25 @@
 public class Game{
 
     private Deck gamedeck;
+    private Deck discard;
     private Player[] players;
     private final int MAX_PLAYERS= 10;
     private int playerCount = 0;
     private int deckPosition = 0;
 
-
     public Game(){
-        // initialize deck and shuffle
         gamedeck = new Deck();
+        gamedeck.initalizeDeck();
         gamedeck.shuffleDeck();
-       gamedeck.printDeck();
-
         players = new Player[MAX_PLAYERS];
+    }
+
+    public void getCurrentCard(){
+        System.out.println(gamedeck.getCard(deckPosition).imagePath);
+    }
+
+    public int getDeckPosition(){
+        return deckPosition;
     }
 
     public void dealPlayersIn() {
@@ -31,6 +37,14 @@ public class Game{
 
 
     }
+
+    public Card flipCard() {
+            Card topCard = gamedeck.getCard(deckPosition);
+            deckPosition++;
+
+            return topCard;
+        }
+
 
 }
 
